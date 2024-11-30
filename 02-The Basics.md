@@ -137,3 +137,51 @@ if (value != "a"){
 ```bash
 npm tsc -g typescript
 ```
+> This installs the TypeScript compiler `tsc` globally.
+> You can use `npx` or similar tools if you'd prefer to run `tsc` from a local `node_modules` package instead
+
+- It teaches to write our first TypeScript program: `hello.ts`:
+```ts
+# hello.ts
+// Greets hello world.
+console.log("Hello world!");
+```
+- Now to command to run it
+```bash
+tsc hello.ts
+```
+- What just happened? Nothing showed on the console.
+- Well, there were no type errors, so we din't get any output on our console since there was nothing to report.
+- But check again - we got some file output instead.
+- If we look in our current directory, we'll see a `hello.js` file next to `hello.ts`.
+- That's the output from our `hello.ts` file after the `tsc` *compiles* or *transforms* it into a plain JavaScript file.
+- And if we check the contents of `hello.js`, we'll see what TypeScript spits out after it processes a `.ts` file:
+```js
+// Greets hello world.
+console.log("Hello world!");
+```
+- In this case, there was very little for TypeScript to transform, so it looks identical to what we wrote in the `hello.ts` file.
+- The compiler tries to emit clean readable code that looks like something a person would write.
+- Even for complex JavaScript code, and with all the advanced TypeScript features (like types, interfaces and decorators), converting them to **simple**, **clean** JavaScript can be tricky. Despite these challenges, TypeScript strives to:
+	1. Indent consistently: Ensure that the generated code is neatly formatted.
+	2. Handle multi-line code gracefully.
+	3. Preserve comments.
+	4. In summary, TypeScript tries to make the compiled output look as if a person wrote it.
+- Let's see code with type-checking error:
+```ts
+// This is an industrial-grade general-purpose greeter function
+function greet(person, date){
+	console.log(`Hello ${person}, today is ${date}`);
+}
+greet("Brenden");
+```
+- If we run `tsc hello.ts` again, notice that we get an error on the command line.
+```bash
+	Expected 2 arguments, but got 1
+```
+- TypeScript is telling us we forgot to pass an argument to the greet function
+- Even though we wrote plain JavaScript, type-checking was still able to find problem with our code
+#### Emitting with Errors
+- One interesting here is, though `tsc` reported an error, it still created a `hello.js` file
+- This is because, it prioritizes not blocking the development process rather than stopping the execution when error is found.
+- This highlights that TypeScript compiles to JavaScript even if there are type errors, focusing on producing valid JavaScript rather than stopping at every type-checking issue.
