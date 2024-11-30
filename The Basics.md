@@ -83,19 +83,19 @@ user.location; // returns undefined in JavaScript
 
 - TypeScript
 
-```
+```ts
 const user = {
 	name: "Daniel",
 	age: 26,
 };
 user.location;
-> Property 'location' does not exist on type '{ name: string; age: number;}'
+| Property 'location' does not exist on type '{ name: string; age: number;}'
 ```
 
 - While this is a trade-off in what you can express, the intent is to catch legitimate bugs in our programs.
 - For example: typos,
 
-```
+```ts
 const announcement = "Hello World!"
 
 // How quickly can you spot the typos?
@@ -108,7 +108,7 @@ announcement.toLocaleLowerCase()
 
 uncalled functions,
 
-```
+```ts
 function flipCoin(){
 	// Meant to be Math.random()
 		return Math.random < 0.5;
@@ -118,7 +118,7 @@ function flipCoin(){
 
 or basic logic errors,
 
-```
+```ts
 const value  = Math.random() < 0.5 ? "a" : "b";
 if (value != "a"){
 	// ...
