@@ -1,3 +1,4 @@
+# The Basics
 Each and every value in js has a set of behaviors you can observe from running different operations
 
 ```ts
