@@ -177,7 +177,7 @@ greet("Brenden");
 ```
 - If we run `tsc hello.ts` again, notice that we get an error on the command line.
 ```bash
-	Expected 2 arguments, but got 1
+Expected 2 arguments, but got 1
 ```
 - TypeScript is telling us we forgot to pass an argument to the greet function
 - Even though we wrote plain JavaScript, type-checking was still able to find problem with our code
