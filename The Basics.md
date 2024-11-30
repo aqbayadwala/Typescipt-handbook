@@ -112,7 +112,7 @@ uncalled functions,
 ```ts
 function flipCoin(){
 	// Meant to be Math.random()
-		return Math.random < 0.5;
+	return Math.random < 0.5;
 > Operator '<' cannot be applied to types '() => number' and 'number'. 
 }
 ```
@@ -122,10 +122,10 @@ or basic logic errors,
 ```ts
 const value  = Math.random() < 0.5 ? "a" : "b";
 if (value != "a"){
-// ...
+	// ...
 } else if (value === "b"){
 > The comparison appears to be unintentional because the types '"a"' and '"b"' have no overlap
-// Oops, unreachable
+	// Oops, unreachable
 }
 ```
 
