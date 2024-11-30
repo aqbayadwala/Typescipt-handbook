@@ -1,6 +1,6 @@
 Each and every value in js has a set of behaviors you can observe from running different operations
 
-```
+```ts
 // Accessing the property 'toLowerCase'
 // on 'message' and then calling it
 message.toLowerCase();
@@ -21,14 +21,14 @@ message()
 
 Let's say `message` was defined in the following way
 
-```
+```ts
 const message = 'Hello world!;'
 ```
 
 - Here, `message.toLowerCase()` will return same string in lowercase
 - But, the `message()` call will not work and will return
 
-```
+```ts
 TypeError: message is not a function
 ```
 
@@ -53,7 +53,7 @@ Now here two concepts in this context
 - Static type systems describe the shapes and behaviors of what our values will be when we run our programs.
 - A type-checker like TypeScript uses that information (shape and behavior) and tells us when things might go off the rails.
 
-```
+```ts
 const message = "hello!";
 
 message();
@@ -73,7 +73,7 @@ Running this code with TypeScript will give us an error message before we run th
 	
 - JavaScript
 	
-```
+```javascript
 const user = {
 	name: "Daniel",
 	age: 26,
@@ -89,7 +89,7 @@ const user = {
 	age: 26,
 };
 user.location;
-| Property 'location' does not exist on type '{ name: string; age: number;}'
+> Property 'location' does not exist on type '{ name: string; age: number;}'
 ```
 
 - While this is a trade-off in what you can express, the intent is to catch legitimate bugs in our programs.
@@ -121,10 +121,10 @@ or basic logic errors,
 ```ts
 const value  = Math.random() < 0.5 ? "a" : "b";
 if (value != "a"){
-	// ...
+// ...
 } else if (value === "b"){
 > The comparison appears to be unintentional because the types '"a"' and '"b"' have no overlap
-	// Oops, unreachable
+// Oops, unreachable
 }
 ```
 
