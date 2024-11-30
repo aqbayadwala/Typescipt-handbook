@@ -129,3 +129,11 @@ if (value != "a"){
 }
 ```
 
+#### Types for tooling
+- Typescript can catch bugs when we make mistakes but it can also prevent us from making those mistakes in the first place.
+- This topic is talking about **autocomplete** or **IntelliSense**
+#### `tsc`, the TypeScript compiler
+- Command to install `tsc`
+```bash
+npm tsc -g typescript
+```
