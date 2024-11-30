@@ -1,3 +1,4 @@
+# The TypeScript Handbook
 #### About the Handbook
 
 - Typescript was made for JavaScript's lack of type checking and similar mechanisms
