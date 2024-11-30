@@ -54,6 +54,7 @@ Now here two concepts in this context
 - Static type systems describe the shapes and behaviors of what our values will be when we run our programs.
 - A type-checker like TypeScript uses that information (shape and behavior) and tells us when things might go off the rails.
 
+
 ```ts
 const message = "hello!";
 
