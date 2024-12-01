@@ -207,7 +207,7 @@ tsc --noEmitOnError hello.ts
 
 ## Explicit Types
 
-- Up until now, we haven't told TypeScript in what `person` or `date` are.
+- Up until now, we haven't told TypeScript what `person` or `date` are.
 - Edit the code to tell TypeScript that `person` is a `string`, and a `date` of type `Date` object.
 - We'll also use `toDateString()` method on date.
 
@@ -218,7 +218,7 @@ function greet(person, date){
 }
 ```
 
-- What we did was add _type annotations_ on `person` and `date` to describe what types of values `greet` can called with.
+- What we did was add _type annotations_ on `person` and `date` to describe what types of values `greet` can be called with.
 - You can read that signature as "`greet` takes a `person` of type `string` and a date of type `Date`".
 - With this, TypeScript can tell us about other cases where `greet` might have been called incorrectly. For example:
 
@@ -266,9 +266,9 @@ greet("Maddison", new Date());
 
 - Notice two things here:
 	- Our `person` and `date` parameters no longer have type annotations.
-	- Our "template string" - that string the use backticks (the `` ` `` character) - was converted to plain strings with concatenations.
+	- Our "template string" - that string that used backticks (the `` ` `` character) - was converted to plain strings with concatenations.
 - Basically, TypeScript cannot run in JavaScript compiler, so it needs to convert the code into plain JavaScript so that it will run in JavaScript runtime.
-- Basically, TypeScript is not a language, it's just a type-checking for JavaScript, hence it erases the type annotations.
+- Basically, TypeScript is not a language, it's just a type-checking tool for JavaScript, hence it erases the type annotations.
 
 ## Downleveling
 
@@ -284,7 +284,7 @@ to
 "Hello ".concat(person, ", today is ").concat(date.toDateString(), "!")
 ```
 
-###### Why did this happen?
+#### Why did this happen?
 
 - Template string are a feature from a version of ECMAScript 2015 a.k.a. ECMAScript 6, ES6 etc..
 - TypeScript has the ability to rewrite code from newer versions of ECMAScript to older versions such as ECMAScript 3 or 5.
