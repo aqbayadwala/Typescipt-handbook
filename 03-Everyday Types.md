@@ -10,4 +10,10 @@
 	- `string` - values like `"hello world"`
 	- `number` - values like `42`. JS doesn't have special runtime value for integers - meaning there is no `int` or `float`. Everything is simply `number`.
 	- `boolean` - values like `true` or `false`
-> The type names `String`, `Number` and `Boolean` (starting with capital letters) are legal, but refer to some special built-in types that will very rarely appear in your code. Always use `string`, `number` and `boolean`
+> The type names `String`, `Number` and `Boolean` (starting with capital letters) are legal, but refer to some special built-in types that will very rarely appear in your code. Always use `string`, `number` and `boolean`.
+## Arrays
+- To specify the type of an array like [1, 2, 3], you can use the syntax `number[]`.
+- This syntax works for any type (e.g. `string[]` is an array for strings and so on).
+- `Array<number>` - this syntax is also available but will be covered in the _generics_ topic.
+> Note that `[number]` is a different thing; refer to the section of ![tuples](https://www.typescriptlang.org/docs/handbook/2/objects.html#tuple-types).
+- 
