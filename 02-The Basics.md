@@ -39,7 +39,7 @@ Now here two concepts in this context
 - What is dynamic typing?
 	- Running the code and checking what happens
 
-#### Static type-checking
+## Static type-checking
 
 - Most people don't like errors when running their code.
 - If we add just a bit of code, save the file and re-run, and get an error and debug it, that is easy and the problem can be fixed quickly.
@@ -60,7 +60,7 @@ message();
 
 Running this code with TypeScript will give us an error message before we run the JavaScript code in the first place.
 
-#### Non-exception failures
+## Non-exception failures
 
 - So far, we have discussed runtime errors - meaning js's runtime telling us when it thinks something is nonsensical.
 - ECMAScript specification defines what is an error and not an error in JavaScript
@@ -125,11 +125,11 @@ if (value != "a"){
 }
 ```
 
-#### Types for tooling
+### Types for tooling
 
 - Typescript can catch bugs when we make mistakes but it can also prevent us from making those mistakes in the first place.
 - This topic is talking about **autocomplete** or **IntelliSense**
-#### `tsc`, the TypeScript compiler
+### `tsc`, the TypeScript compiler
 
 - Command to install `tsc`
 ```bash
