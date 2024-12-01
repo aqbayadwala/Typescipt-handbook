@@ -186,8 +186,6 @@ greet("Brenden");
 - One interesting thing here is, though `tsc` reported an error, it still created a `hello.js` file
 - This is because, it prioritizes not blocking the development process rather than stopping the execution when error is found.
 - This highlights that TypeScript compiles to JavaScript even if there are type errors, focusing on producing valid JavaScript rather than stopping at every type-checking issue.
-<br>
-
 - Now, earlier we said, type-checking code limits the sorts of programs you can run, and so there's a trade-off on what sorts of things a type-checker finds acceptable.
 - Most of the time, that's okay.
 - For example, imagine yourself migrating JavaScript code over to TypeScript and introducing type-checking errors.
