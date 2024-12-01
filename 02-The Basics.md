@@ -239,4 +239,19 @@ greet("Maddison", new Date());
 - Even though we din't tell TypeScript that `msg` had the type `string`, it was able to figure that out.
 - That's a feature, and it is best to not add a type annotation when the type system would end up inferring the same type anyway.
 #### Erased Types
+- Let's take a look at what happens when we compile the above function `greet` with `tsc` to output JavaScript:
+```js
+"use strict"
+// This is an industrial-grade general-purpose greeter function
+function greet(person, date) {
+    console.log("Hello ".concat(person, ", today is ").concat(date.toDateString()));
+}
+greet("Maddison", new Date());
+```
+- Notice two things here:
+	- Our `person` and `date` parameters no longer have type annotations.
+	- Our "template string" - that string the use backticks (the `` ` `` character) - was converted to plain strings with concatenations.
+- Basically, TypeScript cannot run in JavaScript compiler, so it needs to convert the code into plain JavaScript so that it will run in JavaScript runtime.
+- Basically, TypeScript is not a language, it's just a type-checking for JavaScript, hence it erases the type annotations.
+#### Downleveling
 - 
