@@ -324,5 +324,5 @@ to
 - Turning on the `noImplicitAny` flag will issue an error on any variables whose type is implicitly inferred as `any`.
 #### `strictNullChecks`
 - By default, values like `null` and `undefined` are assignable to any other type.
-- This can make writing some code easier, but forgetting to handle `null` and `undefined` is the cause of countless bugs in the world - some consider it a [a billion dollar mistake](https://youtu.be/ybrQvs4x0Ps?si=Y0ElZ38ttjbjoZ1f)
+- This can make writing some code easier, but forgetting to handle `null` and `undefined` is the cause of countless bugs in the world - some consider it [a billion dollar mistake](https://youtu.be/ybrQvs4x0Ps?si=Y0ElZ38ttjbjoZ1f)
 - 
