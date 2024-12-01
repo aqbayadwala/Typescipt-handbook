@@ -29,9 +29,7 @@ const message = 'Hello world!;'
 - Here, `message.toLowerCase()` will return same string in lowercase
 - But, the `message()` call will not work and will return
 
-```ts
-TypeError: message is not a function
-```
+> TypeError: message is not a function
 
 It'd be great if we could avoid mistakes like this
 
