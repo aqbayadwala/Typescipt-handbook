@@ -152,7 +152,7 @@ console.log("Hello world!");
 tsc hello.ts
 ```
 - What just happened? Nothing showed on the console.
-- Well, there were no type errors, so we din't get any output on our console since there was nothing to report.
+- Well, there were no type errors, so we didn't get any output on our console since there was nothing to report.
 - But check again - we got some file output instead.
 - If we look in our current directory, we'll see a `hello.js` file next to `hello.ts`.
 - That's the output from our `hello.ts` file after the `tsc` *compiles* or *transforms* it into a plain JavaScript file.
@@ -248,7 +248,7 @@ greet("Maddison", new Date());
 
 ![Screenshot](./assets/Screenshot%20from%202024-12-01%2011-17-50.png)
 
-- Even though we din't tell TypeScript that `msg` had the type `string`, it was able to figure that out.
+- Even though we didn't tell TypeScript that `msg` had the type `string`, it was able to figure that out.
 - That's a feature, and it is best to not add a type annotation when the type system would end up inferring the same type anyway.
 
 ## Erased Types
@@ -290,10 +290,10 @@ to
 - TypeScript has the ability to rewrite code from newer versions of ECMAScript to older versions such as ECMAScript 3 or 5.
 - This process of moving from higher version to lower version is sometimes called _downleveling_.
 
-- By default, TypeScript converts to ES3, an extremeley old version of ECMAScript.
+- By default, TypeScript converts to ES3, an extremely old version of ECMAScript.
 - We could choose any version by using `target` option.
 - Running with `--target es2015` changes the emitted file to ECMAScript 2015.
-- This feature is ensures that a TypeScript-emitted file can run on older browsers as well.
+- This feature ensures that a TypeScript-emitted file can run on older browsers as well.
 ## Strictness
 ##### Different users want different things with TypeScript as a type-checker.
 - Some people are looking for more loose opt-in experience which can help validate some parts of their program, and still have decent tooling.
