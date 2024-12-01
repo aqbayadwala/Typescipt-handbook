@@ -15,5 +15,5 @@
 - To specify the type of an array like [1, 2, 3], you can use the syntax `number[]`.
 - This syntax works for any type (e.g. `string[]` is an array for strings and so on).
 - `Array<number>` - this syntax is also available but will be covered in the _generics_ topic.
-> Note that `[number]` is a different thing; refer to the section of ![tuples](https://www.typescriptlang.org/docs/handbook/2/objects.html#tuple-types).
+> Note that `[number]` is a different thing; refer to the section of [tuples](https://www.typescriptlang.org/docs/handbook/2/objects.html#tuple-types).
 - 
