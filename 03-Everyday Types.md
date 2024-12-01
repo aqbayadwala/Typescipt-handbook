@@ -10,4 +10,4 @@
 	- `string` - values like `"hello world"`
 	- `number` - values like `42`. JS doesn't have special runtime value for integers - meaning there is no `int` or `float`. Everything is simply `number`.
 	- `boolean` - values like `true` or `false`
-> 	The type names `String`, `Number` and `Boolean` (starting with capital letters) are legal, but refer to some special built-in types that will very rarely appear in your code. Always use `string`, `number` and `boolean`
+> The type names `String`, `Number` and `Boolean` (starting with capital letters) are legal, but refer to some special built-in types that will very rarely appear in your code. Always use `string`, `number` and `boolean`
