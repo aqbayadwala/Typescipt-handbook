@@ -141,7 +141,7 @@ npm tsc -g typescript
 > This installs the TypeScript compiler `tsc` globally.
 > You can use `npx` or similar tools if you'd prefer to run `tsc` from a local `node_modules` package instead
 
-- It teaches to write our first TypeScript program: `hello.ts`:
+- Let's write our first TypeScript program: `hello.ts`:
 ```ts
 # hello.ts
 // Greets hello world.
