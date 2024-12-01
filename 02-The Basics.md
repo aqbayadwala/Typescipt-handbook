@@ -128,11 +128,11 @@ if (value != "a"){
 }
 ```
 
-### Types for tooling
+## Types for tooling
 
 - Typescript can catch bugs when we make mistakes but it can also prevent us from making those mistakes in the first place.
 - This topic is talking about **autocomplete** or **IntelliSense**
-### `tsc`, the TypeScript compiler
+## `tsc`, the TypeScript compiler
 
 - Command to install `tsc`
 ```bash
@@ -181,7 +181,7 @@ greet("Brenden");
 > Expected 2 arguments, but got 1
 - TypeScript is telling us we forgot to pass an argument to the greet function
 - Even though we wrote plain JavaScript, type-checking was still able to find problem with our code
-#### Emitting with Errors
+## Emitting with Errors
 
 - One interesting thing here is, though `tsc` reported an error, it still created a `hello.js` file
 - This is because, it prioritizes not blocking the development process rather than stopping the execution when error is found.
@@ -205,7 +205,7 @@ tsc --noEmitOnError hello.ts
 >[!info]
 > Emit means creating a `.js` file. When we use `--noEmitOnError` , it does not create a new `.js`
 
-#### Explicit Types
+## Explicit Types
 
 - Up until now, we haven't told TypeScript in what `person` or `date` are.
 - Edit the code to tell TypeScript that `person` is a `string`, and a `date` of type `Date` object.
@@ -251,7 +251,7 @@ greet("Maddison", new Date());
 - Even though we din't tell TypeScript that `msg` had the type `string`, it was able to figure that out.
 - That's a feature, and it is best to not add a type annotation when the type system would end up inferring the same type anyway.
 
-#### Erased Types
+## Erased Types
 
 - Let's take a look at what happens when we compile the above function `greet` with `tsc` to output JavaScript:
 
@@ -270,7 +270,7 @@ greet("Maddison", new Date());
 - Basically, TypeScript cannot run in JavaScript compiler, so it needs to convert the code into plain JavaScript so that it will run in JavaScript runtime.
 - Basically, TypeScript is not a language, it's just a type-checking for JavaScript, hence it erases the type annotations.
 
-#### Downleveling
+## Downleveling
 
 - One other difference from the above was that our template string was rewritten from
 
@@ -294,7 +294,7 @@ to
 - We could choose any version by using `target` option.
 - Running with `--target es2015` changes the emitted file to ECMAScript 2015.
 - This feature is so that the TypeScript emitted file can run on older browsers as well.
-#### Strictness
+## Strictness
 ###### Different users want different things with TypeScript as a type-checker.
 - Some people are looking for more loose opt-in experience which can help validate some parts of their program, and still have decent tooling.
 - This is the default experience with typescript where types are optional, they are inferred leniently and there's no checking for potentially `null`/`undefined` values.
@@ -312,13 +312,13 @@ to
 - than can be turned on or off, and all of our examples will be written with all of them enabled unless otherwise stated.
 - The `strict` flag in the CLI, or `"strict": true` in a `tsconfig.json` toggles them all on simultaneously, but we can opt out of them individually.
 - The two biggest ones you should know about are `noImplicitAny` and `strictNullChecks`.
-#### `noImplicitAny`
+## `noImplicitAny`
 - Recall that TypeScript in some places doesn't try to infer types for us and instead falls back to the most lenient type: `any`. 
 - That isn't the worst thing - after all, falling back to `any` is just the plain JavaScript experience anyway.
 - However, using `any` often defeats the purpose of using TypeScript in the first place.
 - The more typed your program is, the more validation and tooling you'll get, meaning you'll run into fewer bugs as you code.
 - Turning on the `noImplicitAny` flag will issue an error on any variables whose type is implicitly inferred as `any`.
-#### `strictNullChecks`
+## `strictNullChecks`
 - By default, values like `null` and `undefined` are assignable to any other type.
 - This can make writing some code easier, but forgetting to handle `null` and `undefined` is the cause of countless bugs in the world - some consider it [a billion dollar mistake](https://youtu.be/ybrQvs4x0Ps?si=Y0ElZ38ttjbjoZ1f)
 - The `strictNullChecks` flag makes handling `null` and `undefined` more explicit, and spares us from worrying about whether we forgot to handle `null` and `undefined`.
