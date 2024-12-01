@@ -45,7 +45,48 @@ const n: number = obj;
 ```
 
 > **Info**:
-> An interesting thing here, once a variable is assigned type `any`, typescript disables type-checking for any instruction which involves that variable. Therefore in the above code, this last line works where a `string` is assigned type `number`. 
+> An interesting thing here, once a variable is assigned type `any`, typescript disables type-checking for any instruction which involves that variable. Therefore in the above code, this last line works where a `string` is assigned to a type `number`. 
 ```ts
 const n: number = obj;
 ```
+
+- The `any` type is useful when you don't want to write out a long type just to convince TypeScript that a particular line of code is okay.
+
+### `noImplicitAny`
+
+- When you don't specify a type and TypeScript can't infer it from context, the compiler will typically default to `any`.
+- You usually want to avoid this though, because `any` isn't type-checked.
+- Use the compiler flag `noImplicitAny` to flag any implicit `any` as an error.
+
+## Type Annotations on Variables
+
+- When you declare a variable using `const`, `var` or `let`, you can optionally add a type annotation to explicitly specify the type of the variable:
+
+```ts
+let myName: string = "Alice";
+```
+
+> TypeScript doesn't use "types on the left"-style declarations like `int x = 0`; Type annotations will always go _after_ the thing being typed.
+
+- In most cases, a variable is not needed to be typed.
+- Wherever possible, TypeScript will try to automatically infer the types in your code.
+- For example, the type of a variable is inferred based on the type of its initializer (the value by which the variable is initialized, simply meaning the value given to the variable):
+
+```ts
+// No type annotation needed -- 'myName' inferred as type 'string'
+let myName = "Alice";
+```
+
+- For most part, you don't need to explicitly learn how TypeScript infers types.
+- If you're starting out, try using fewer types and you will be surprised how few you need for TypeScript to fully understand what's going on.
+
+## Functions
+
+- Functions are the primary means of passing data around in JavaScript.
+
+> I tried to understand this statement intensely. 
+> What it means is, JS is a language which is built in a way that all of its tasks are accomplished by functions.
+> Other languages like Python, C, C++ have functions, but they also have Classes and other programming paradigms.
+
+
+- 
