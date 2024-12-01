@@ -44,8 +44,8 @@ obj = "hello";
 const n: number = obj;
 ```
 
-> **Info** An interesting thing here:
-> Once a variable is assigned type `any`, typescript disables type-checking for any instruction which involves that variable. Therefore in the above code, the last line works
+> **Info**:
+> An interesting thing here, once a variable is assigned type `any`, typescript disables type-checking for any instruction which involves that variable. Therefore in the above code, the last line works
 ```ts
 const n: number = obj;
 ```
