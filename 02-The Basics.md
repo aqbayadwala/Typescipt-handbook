@@ -55,7 +55,7 @@ const message = "hello!";
 
 message();
 
-> This expressions is not callable.
+> This expression is not callable.
 > Type 'String' has no call signatures
 ```
 
@@ -64,10 +64,10 @@ Running this code with TypeScript will give us an error message before we run th
 ## Non-exception failures
 
 - So far, we have discussed runtime errors - meaning js's runtime telling us when it thinks something is nonsensical.
-- ECMAScript specification defines what is an error and not an error in JavaScript
+- ECMAScript specification defines what is an error and what is not an error in JavaScript.
 - In ECMAScript specs
-	- calling something which isn't callable throws an error
-	- but calling a property which doesn't exist returns `undefined`
+	- calling something which isn't callable throws an error.
+	- but calling a property which doesn't exist returns `undefined`.
 	
 - JavaScript
 	
@@ -76,6 +76,7 @@ const user = {
 	name: "Daniel",
 	age: 26,
 };
+
 user.location; // returns undefined in JavaScript
 ```
 
@@ -87,6 +88,7 @@ const user = {
 	age: 26,
 };
 user.location;
+
 > Property 'location' does not exist on type '{ name: string; age: number;}'
 ```
 
@@ -145,7 +147,7 @@ npm tsc -g typescript
 // Greets hello world.
 console.log("Hello world!");
 ```
-- Now to command to run it
+- Now the command to run it
 ```bash
 tsc hello.ts
 ```
@@ -175,9 +177,8 @@ function greet(person, date){
 greet("Brenden");
 ```
 - If we run `tsc hello.ts` again, notice that we get an error on the command line.
-```bash
-Expected 2 arguments, but got 1
-```
+
+> Expected 2 arguments, but got 1
 - TypeScript is telling us we forgot to pass an argument to the greet function
 - Even though we wrote plain JavaScript, type-checking was still able to find problem with our code
 #### Emitting with Errors
