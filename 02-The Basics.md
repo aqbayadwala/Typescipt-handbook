@@ -44,9 +44,7 @@ Now here two concepts in this context
 - Most people don't like errors when running their code.
 - If we add just a bit of code, save the file and re-run, and get an error and debug it, that is easy and the problem can be fixed quickly.
 - But we might not have tested the feature thoroughly enough, so we might never actually come across the error
-- Or if we are lucky enough to see the error, we might end up doing a lot of refactoring and adding a lot of different code to fix the problem for moment.
-<br>
-
+- Or if we are lucky enough to see the error, we might end up doing a lot of refactoring and adding a lot of different code to fix the problem for the moment.
 - If we have a tool that helps us find these bugs before our code runs, it would be so good.
 - That's what a static type checker is and does.
 - Static type systems describe the shapes and behaviors of what our values will be when we run our programs.
