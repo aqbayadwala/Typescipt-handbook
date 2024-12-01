@@ -185,6 +185,7 @@ Expected 2 arguments, but got 1
 - One interesting thing here is, though `tsc` reported an error, it still created a `hello.js` file
 - This is because, it prioritizes not blocking the development process rather than stopping the execution when error is found.
 - This highlights that TypeScript compiles to JavaScript even if there are type errors, focusing on producing valid JavaScript rather than stopping at every type-checking issue.
+
 - Now, earlier we said, type-checking code limits the sorts of programs you can run, and so there's a trade-off on what sorts of things a type-checker finds acceptable.
 - Most of the time, that's okay.
 - For example, imagine yourself migrating JavaScript code over to TypeScript and introducing type-checking errors.
@@ -254,4 +255,37 @@ greet("Maddison", new Date());
 - Basically, TypeScript cannot run in JavaScript compiler, so it needs to convert the code into plain JavaScript so that it will run in JavaScript runtime.
 - Basically, TypeScript is not a language, it's just a type-checking for JavaScript, hence it erases the type annotations.
 #### Downleveling
-- 
+- One other difference from the above was that our template string was rewritten from
+```ts
+`Hello ${person}, today is ${date.toDateString()}!`;
+```
+to
+```js
+"Hello ".concat(person, ", today is ").concat(date.toDateString(), "!")
+```
+###### Why did this happen?
+- Template string are a feature from a version of ECMAScript 2015 a.k.a. ECMAScript 6, ES6 etc..
+- TypeScript has the ability to rewrite code from newer versions of ECMAScript to older versions such as ECMAScript 3 or 5.
+- This process of moving from higher version to lower version is sometimes called _downleveling_.
+
+- By default, TypeScript converts to ES3, an extremeley old version of ECMAScript.
+- We could choose any version by using `target` option.
+- Running with `--target es2015` changes the emitted file to ECMAScript 2015.
+- This feature is so that the TypeScript emitted file can run on older browsers as well.
+#### Strictness
+###### Different users want different things with TypeScript as a type-checker.
+- Some people are looking for more loose opt-in experience which can help validate some parts of their program, and still have decent tooling.
+- This is the default experience with typescript where types are optional, they are inferred leniently and there's no checking for potentially `null`/`undefined` values.
+- `tsc` emits with errors.
+- If you're migrating from JavaScript to TypeScript, this might be a desirable step.
+
+###### In contrast, a lot of users prefer
+- to have TypeScript validate as much as it can straight away and that's why the language provides strictness settings as well.
+- These strictness settings are not like a switch (either on or off), rather they are like a dial.
+- The further you turn this dial up, the stricter TypeScript will check for errors.
+- This can require a little extra work, but generally speaking it pays off for itself in the long run, and enables more thorough checks and more accurate tooling.
+- When possible, a new codebase should always turn these strictness checks on.
+
+###### Typescript has several type-checking strictness flags
+- than can be turned on or off, and all of our examples will be written with all of them enabled unless otherwise stated.
+- The strict
