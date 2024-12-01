@@ -43,12 +43,11 @@ Now here two concepts in this context
 
 #### Static type-checking
 
-- Most people don't like errors when running their code 
-<br>
-
+- Most people don't like errors when running their code.
 - If we add just a bit of code, save the file and re-run, and get an error and debug it, that is easy and the problem can be fixed quickly.
 - But we might not have tested the feature thoroughly enough, so we might never actually come across the error
 - Or if we are lucky enough to see the error, we might end up doing a lot of refactoring and adding a lot of different code to fix the problem for moment.
+<br>
 
 - If we have a tool that helps us find these bugs before our code runs, it would be so good.
 - That's what a static type checker is and does.
@@ -131,9 +130,11 @@ if (value != "a"){
 ```
 
 #### Types for tooling
+
 - Typescript can catch bugs when we make mistakes but it can also prevent us from making those mistakes in the first place.
 - This topic is talking about **autocomplete** or **IntelliSense**
 #### `tsc`, the TypeScript compiler
+
 - Command to install `tsc`
 ```bash
 npm tsc -g typescript
@@ -183,9 +184,11 @@ Expected 2 arguments, but got 1
 - TypeScript is telling us we forgot to pass an argument to the greet function
 - Even though we wrote plain JavaScript, type-checking was still able to find problem with our code
 #### Emitting with Errors
+
 - One interesting thing here is, though `tsc` reported an error, it still created a `hello.js` file
 - This is because, it prioritizes not blocking the development process rather than stopping the execution when error is found.
 - This highlights that TypeScript compiles to JavaScript even if there are type errors, focusing on producing valid JavaScript rather than stopping at every type-checking issue.
+<br>
 
 - Now, earlier we said, type-checking code limits the sorts of programs you can run, and so there's a trade-off on what sorts of things a type-checker finds acceptable.
 - Most of the time, that's okay.
@@ -196,25 +199,33 @@ Expected 2 arguments, but got 1
 - But if you want to make TypeScript act a bit more strictly.
 - In that case, you can use `noEmitOnError` compiler option.
 - Try running `hello.ts` file with that flag:
+
 ```shell
 tsc --noEmitOnError hello.ts
 ```
+
 - You'll notice that `hello.js` never gets updated.
+
 >[!info]
 > Emit means creating a `.js` file. When we use `--noEmitOnError` , it does not create a new `.js`
+
 #### Explicit Types
+
 - Up until now, we haven't told TypeScript in what `person` or `date` are.
 - Edit the code to tell TypeScript that `person` is a `string`, and a `date` of type `Date` object.
 - We'll also use `toDateString()` method on date.
+
 ```ts
 // This is an industrial-grade general-purpose greeter function
 function greet(person, date){
 	console.log(`Hello ${person}, today is ${date.toDateString()}!`);
 }
 ```
+
 - What we did was add _type annotations_ on `person` and `date` to describe what types of values `greet` can called with.
 - You can read that signature as "`greet` takes a `person` of type `string` and a date of type `Date`".
 - With this, TypeScript can tell us about other cases where `greet` might have been called incorrectly. For example:
+
 ```ts
 // This is an industrial-grade general-purpose greeter function
 function greet(person, date){
@@ -223,9 +234,11 @@ function greet(person, date){
 greet("Maddison", Date());
 > Argument of type 'string' is not assignable to parameter of type 'Date'
 ```
+
 - Why did TypeScript reported an error on our second argument?
 - Calling `Date()` in JavaScript returns a `string`. On the other hand, constructing a `Date` with `new Date()` actually gives us what we were expecting.
 - Let's change the code:
+
 ```ts
 // This is an industrial-grade general-purpose greeter function
 function greet(person, date){
@@ -233,6 +246,7 @@ function greet(person, date){
 }
 greet("Maddison", new Date());
 ```
+
 - We don't have to always write explicit type annotations.
 - In many cases, TypeScript can even infer the types for us if we omit them.
 
@@ -240,8 +254,11 @@ greet("Maddison", new Date());
 
 - Even though we din't tell TypeScript that `msg` had the type `string`, it was able to figure that out.
 - That's a feature, and it is best to not add a type annotation when the type system would end up inferring the same type anyway.
+
 #### Erased Types
+
 - Let's take a look at what happens when we compile the above function `greet` with `tsc` to output JavaScript:
+
 ```js
 "use strict"
 // This is an industrial-grade general-purpose greeter function
@@ -250,21 +267,29 @@ function greet(person, date) {
 }
 greet("Maddison", new Date());
 ```
+
 - Notice two things here:
 	- Our `person` and `date` parameters no longer have type annotations.
 	- Our "template string" - that string the use backticks (the `` ` `` character) - was converted to plain strings with concatenations.
 - Basically, TypeScript cannot run in JavaScript compiler, so it needs to convert the code into plain JavaScript so that it will run in JavaScript runtime.
 - Basically, TypeScript is not a language, it's just a type-checking for JavaScript, hence it erases the type annotations.
+
 #### Downleveling
+
 - One other difference from the above was that our template string was rewritten from
+
 ```ts
 `Hello ${person}, today is ${date.toDateString()}!`;
 ```
+
 to
+
 ```js
 "Hello ".concat(person, ", today is ").concat(date.toDateString(), "!")
 ```
+
 ###### Why did this happen?
+
 - Template string are a feature from a version of ECMAScript 2015 a.k.a. ECMAScript 6, ES6 etc..
 - TypeScript has the ability to rewrite code from newer versions of ECMAScript to older versions such as ECMAScript 3 or 5.
 - This process of moving from higher version to lower version is sometimes called _downleveling_.
@@ -289,4 +314,15 @@ to
 
 ###### Typescript has several type-checking strictness flags
 - than can be turned on or off, and all of our examples will be written with all of them enabled unless otherwise stated.
-- The strict
+- The `strict` flag in the CLI, or `"strict": true` in a `tsconfig.json` toggles them all on simultaneously, but we can opt out of them individually.
+- The two biggest ones you should know about are `noImplicitAny` and `strictNullChecks`.
+#### `noImplicitAny`
+- Recall that TypeScript in some places doesn't try to infer types for us and instead falls back to the most lenient type: `any`. 
+- That isn't the worst thing - after all, falling back to `any` is just the plain JavaScript experience anyway.
+- However, using `any` often defeats the purpose of using TypeScript in the first place.
+- The more typed your program is, the more validation and tooling you'll get, meaning you'll run into fewer bugs as you code.
+- Turning on the `noImplicitAny` flag will issue an error on any variables whose type is implicitly inferred as `any`.
+#### `strictNullChecks`
+- By default, values like `null` and `undefined` are assignable to any other type.
+- This can make writing some code easier, but forgetting to handle `null` and `undefined` is the cause of countless bugs in the world - some consider it a [a billion dollar mistake](https://youtu.be/ybrQvs4x0Ps?si=Y0ElZ38ttjbjoZ1f)
+- 
