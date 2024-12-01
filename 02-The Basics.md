@@ -54,6 +54,7 @@ Now here two concepts in this context
 const message = "hello!";
 
 message();
+
 > This expressions is not callable.
 > Type 'String' has no call signatures
 ```
