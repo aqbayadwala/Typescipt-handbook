@@ -202,7 +202,7 @@ tsc --noEmitOnError hello.ts
 
 - You'll notice that `hello.js` never gets updated.
 
->[!info]
+> **Note**
 > Emit means creating a `.js` file. When we use `--noEmitOnError` , it does not create a new `.js`
 
 #### Explicit Types
