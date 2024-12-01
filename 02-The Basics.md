@@ -293,22 +293,22 @@ to
 - By default, TypeScript converts to ES3, an extremeley old version of ECMAScript.
 - We could choose any version by using `target` option.
 - Running with `--target es2015` changes the emitted file to ECMAScript 2015.
-- This feature is so that the TypeScript emitted file can run on older browsers as well.
+- This feature is ensures that a TypeScript-emitted file can run on older browsers as well.
 ## Strictness
-###### Different users want different things with TypeScript as a type-checker.
+##### Different users want different things with TypeScript as a type-checker.
 - Some people are looking for more loose opt-in experience which can help validate some parts of their program, and still have decent tooling.
 - This is the default experience with typescript where types are optional, they are inferred leniently and there's no checking for potentially `null`/`undefined` values.
 - `tsc` emits with errors.
 - If you're migrating from JavaScript to TypeScript, this might be a desirable step.
 
-###### In contrast, a lot of users prefer
+##### In contrast, a lot of users prefer
 - to have TypeScript validate as much as it can straight away and that's why the language provides strictness settings as well.
 - These strictness settings are not like a switch (either on or off), rather they are like a dial.
 - The further you turn this dial up, the stricter TypeScript will check for errors.
 - This can require a little extra work, but generally speaking it pays off for itself in the long run, and enables more thorough checks and more accurate tooling.
 - When possible, a new codebase should always turn these strictness checks on.
 
-###### Typescript has several type-checking strictness flags
+##### Typescript has several type-checking strictness flags
 - than can be turned on or off, and all of our examples will be written with all of them enabled unless otherwise stated.
 - The `strict` flag in the CLI, or `"strict": true` in a `tsconfig.json` toggles them all on simultaneously, but we can opt out of them individually.
 - The two biggest ones you should know about are `noImplicitAny` and `strictNullChecks`.
