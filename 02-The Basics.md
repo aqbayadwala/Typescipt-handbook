@@ -234,7 +234,7 @@ greet("Maddison", new Date());
 - We don't have to always write explicit type annotations.
 - In many cases, TypeScript can even infer the types for us if we omit them.
 
-![[../assets/Screenshot from 2024-12-01 11-17-50.png]]
+![[assets/Screenshot from 2024-12-01 11-17-50.png]]
 
 - Even though we din't tell TypeScript that `msg` had the type `string`, it was able to figure that out.
 - That's a feature, and it is best to not add a type annotation when the type system would end up inferring the same type anyway.
