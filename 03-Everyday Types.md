@@ -129,3 +129,38 @@ function getFavouriteNumber(): number {
 	return 26;
 }
 ```
+
+- Much like variable type annotations, you usually don't need a return type annotation because TypeScript will infer type based on its `return` statements.
+- Some codebases will explicitly specify a return value for documentation purposes, to prevent accidental changes or just for personal preference.
+
+### Functions which return Promises
+
+>[!info] 
+>##### Promise and pizza shop analogy
+>- Imagine the guy on the counter taking orders as JavaScript.
+>- Every pizza order is a synchronous instruction in an asynchronous function.
+>- When you place an order to the guy (JavaScript), it passes that order to the kitchen and continues to take next orders.
+>- There is only one person taking orders because JavaScript is single threaded.
+>- The kitchen staff provides an acknowledgement receipt with a status of the order i.e. order placed, preparing food or out for delivery.
+>- This acknowledgment receipt is a Promise.
+>- A promise has three statuses: pending, resolved and rejected.
+>- The kitchen staff is the browser API's to which JavaScript delegates tasks.
+>- When an order is complete (i.e. the fetch call is done), the `.then` calls are executed.
+>- We can imagine the `.then` calls as either dine in, takeaway or home delivery etc.
+>- The `await` keyword is just syntactic sugar.
+>- It means whatever instructions comes after await are to be completed only if the promise is resolved or rejected.
+
+- If you want to annotate the return type of a function that returns a promise, you should use the `Promise` type:
+
+```ts
+async function getFavouriteNumber(): Promise<number> {
+	return 26;
+}
+```
+
+>[!info]
+>##### `async` functions always return a `promise`
+>- Every `async` function returns a promise.
+>- Even though if it's returning a plain value, it wraps that value in a promise.
+>- Basically, it gives a ready pizza but with a receipt.
+
