@@ -84,9 +84,48 @@ let myName = "Alice";
 
 - Functions are the primary means of passing data around in JavaScript.
 
-> I tried to understand this statement intensely. 
-> What it means is, JS is a language which is built in a way that all of its tasks are accomplished by functions.
-> Other languages like Python, C, C++ have functions, but they also have Classes and other programming paradigms.
+> [!info] 
+> I tried to understand this statement intensely. What it means is, JS is a language which is built in a way that all of its tasks are accomplished by functions. Other languages like Python, C, C++ have functions, but they also have Classes and other programming paradigms.
 
 
-- 
+- TypeScript allows you to specify the types of both the input and the output values of functions.
+### Parameter Type Annotations
+
+- When you declare a function, you can add type annotations after each paramter to declare what types of parameters the function accepts.
+- Parameter type annotations go after the parameter name.
+
+```ts
+// Parameter type annotation
+function greet(name: string){
+	console.log("Hello, " + name.toUpperCase() + "!!");
+}
+```
+
+> [!Info] 
+> ##### My Thoughts on TypeScript vs. C or any low level languages
+> - TypeScript adds type annotations **on top of JavaScript**, which feels like **backwards work** since JavaScript was originally designed without type-checking.  
+> - In **C**, type specification is **mandatory** from the start, ensuring type safety upfront, which I feel is a **cleaner and more structured** approach to programming.  
+> - TypeScript feels like it’s **patching a gap** in JavaScript rather than being a foundational solution.  
+> - **Modern languages** with more abstraction seem aimed at **making coding easier for newcomers**, but this sometimes **removes the depth** that helps programmers **understand core concepts** like memory management and type systems.
+
+- When a parameter has type annotation, arguments to that function will be checked:
+
+```ts
+// Would be a runtime error if executed!
+greet(42);
+
+> Argument of type 'number' is not assignable to parameter of type 'string'.
+```
+
+> Even if you don't have type annotations on your parameters, TypeScript will still check that you passed the right number of arguments.
+
+### Return Type Annotations
+
+- You can also add return type annotations.
+- Return type annotations appear after the parameter list:
+
+```ts
+function getFavouriteNumber(): number {
+return 26;
+}
+```
