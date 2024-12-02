@@ -164,3 +164,30 @@ async function getFavouriteNumber(): Promise<number> {
 >- Even though if it's returning a plain value, it wraps that value in a promise.
 >- Basically, it gives a ready pizza but with a receipt.
 
+### Anonymous function
+
+- Anonymous functions are a little bit different from function declarations (normal functions).
+- When a function appears in a place where TypeScript can determine how it's going to be called (what the function is used for), the parameters of the function are automatically given types.
+
+```ts
+const names = ["Alice", "Bob", "Eve"];
+
+// Contextual typing for function - parameter s inferred to have type string
+names.forEach(function (s) {
+	console.log(s.toUpperCase());
+});
+// TypeScript knows that s is a string because names is an array of strings
+
+// Contextual typing also applies to arrow functions
+names.forEach((s) => {
+	console.log(s.toUpperCase());
+});
+```
+
+- This is called contextual typing.
+- Similar to inference rules, you don't need to learn how this happens, but understanding that it does can help you notice when type annotations are not needed.
+- Later we'll see more examples how the context that a value occurs in can affect type.
+
+## Object types
+
+- 
