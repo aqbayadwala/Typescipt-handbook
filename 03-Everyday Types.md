@@ -263,3 +263,8 @@ function printCoord(pt: {x: number; y:number}){
 printCoord({ x: 3, y: 7 });
 ```
 
+- Here, we annotated the parameter with a type with two properties - `x` and `y` - which are both of type `number`.
+- You can use `,` or `;` to separate the properties and the last operator is optional either way.
+- The type part of each property is also optional. If you don't specify a type, it will be assumed to `any`.
+
+### Optional Properties
