@@ -126,6 +126,6 @@ greet(42);
 
 ```ts
 function getFavouriteNumber(): number {
-return 26;
+	return 26;
 }
 ```
