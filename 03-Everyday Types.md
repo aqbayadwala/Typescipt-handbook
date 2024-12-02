@@ -66,6 +66,7 @@ const n: number = obj;
 let myName: string = "Alice";
 ```
 
+> [!info]
 > TypeScript doesn't use "types on the left"-style declarations like `int x = 0`; Type annotations will always go _after_ the thing being typed.
 
 - In most cases, a variable is not needed to be typed.
@@ -101,8 +102,7 @@ function greet(name: string){
 }
 ```
 
-> [!Info] 
-> ##### My Thoughts on TypeScript vs. C or any low level languages
+> [!Info]- My Thoughts on TypeScript vs. C or any low level languages
 > - TypeScript adds type annotations **on top of JavaScript**, which feels like **backwards work** since JavaScript was originally designed without type-checking.  
 > - In **C**, type specification is **mandatory** from the start, ensuring type safety upfront, which I feel is a **cleaner and more structured** approach to programming.  
 > - TypeScript feels like it’s **patching a gap** in JavaScript rather than being a foundational solution.  
@@ -135,8 +135,7 @@ function getFavouriteNumber(): number {
 
 ### Functions which return Promises
 
->[!info] 
->##### Promise and pizza shop analogy
+>[!info]- Promise and pizza shop analogy
 >- Imagine the guy on the counter taking orders as JavaScript.
 >- Every pizza order is a synchronous instruction in an asynchronous function.
 >- When you place an order to the guy (JavaScript), it passes that order to the kitchen and continues to take next orders.
@@ -158,8 +157,7 @@ async function getFavouriteNumber(): Promise<number> {
 }
 ```
 
->[!info]
->##### `async` functions always return a `promise`
+>[!info]- `async` functions always return a `promise`
 >- Every `async` function returns a promise.
 >- Even though if it's returning a plain value, it wraps that value in a promise.
 >- Basically, it gives a ready pizza but with a receipt.
@@ -190,4 +188,78 @@ names.forEach((s) => {
 
 ## Object types
 
-- 
+- Apart from primitives, the most common sort of type you'll encounter is an object type.
+- This refers to any JavaScript value with properties, which is almost all of them.
+
+> [!info]- Apart from primitives, every thing is an object in JavaScript
+> 
+> The primitives are `string`, `number`, `boolean`, `null`, `undefined`, `symbol`, and `bigint`.
+> 
+> Here are some examples of data types in JavaScript (apart from primitives) that have properties:
+> 
+> 1. **Object**  
+>    Example:  
+>    ```js
+>    const person = {
+>      name: "Alice",
+>      age: 25
+>    };
+>    // person has properties: name and age
+>    ```
+> 
+> 2. **Array**  
+>    Arrays are objects, and they have properties like `length` and methods like `.push()` or `.pop()`.  
+>    Example:  
+>    ```js
+>    const fruits = ["apple", "banana"];
+>    // fruits has a property 'length' and array methods like 'push'
+>    ```
+> 
+> 3. **Function**  
+>    Functions in JavaScript are also objects, and they have properties such as `name`, `length`, or custom properties you add.  
+>    Example:  
+>    ```js
+>    function greet() {}
+>    greet.description = "This is a greeting function.";
+>    // greet has a property 'description'
+>    ```
+> 
+> 4. **Date**  
+>    The `Date` object has properties and methods related to date and time.  
+>    Example:  
+>    ```js
+>    const today = new Date();
+>    console.log(today.getFullYear()); // 'today' has methods like getFullYear()
+>    ```
+> 
+> 5. **RegExp**  
+>    Regular expressions in JavaScript are objects with properties like `lastIndex` and methods like `.test()` and `.exec()`.  
+>    Example:  
+>    ```js
+>    const pattern = /hello/;
+>    // pattern has a property 'lastIndex'
+>    ```
+> 
+> 6. **Error**  
+>    The `Error` object has properties like `message` and `name`.  
+>    Example:  
+>    ```js
+>    const error = new Error("Something went wrong");
+>    console.log(error.message); // 'error' has the property 'message'
+>    ```
+> 
+> These types are all considered objects, so they have properties and methods that can be accessed and manipulated.
+
+- To define an object type, we simply list its properties and their types.
+- For example, here's a function that takes a point-like object.
+
+```ts
+// The parameter's type annotation is an object type
+function printCoord(pt: {x: number; y:number}){
+	console.log("The coordinate's x value is " + pt.x);
+	console.log("The coordinate's y value is " + pt.y);
+}
+
+printCoord({ x: 3, y: 7 });
+```
+
