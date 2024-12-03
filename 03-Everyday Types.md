@@ -267,7 +267,7 @@ printCoord({ x: 3, y: 7 });
 - You can use `,` or `;` to separate the properties and the last operator is optional either way.
 - The type part of each property is also optional. If you don't specify a type, it will be assumed to `any`.
 
-### Optional Properties
+#### Optional Properties
 
 - Object types can also specify that some or all of their properties are optional.
 - To do this, add a `?` after the property name:
@@ -301,3 +301,45 @@ function printName(obj: {first: string, last?: string}){
 }
 ```
 
+## Union Types
+
+- TypeScript's type system allows you to build new types out of existing ones using a large variety of operators.
+- Now that we know how to write a few types, it's time to start combining them in interesting ways.
+
+#### Defining a Union Type
+
+- The first way to combine types you might see is union types.
+- A union type is a type formed from two or more types, representing values that may be any one of those types.
+- We refer each of these types as the union's members.
+- Let us write a function that can operate on strings and numbers.
+
+```ts
+function printId(id: number | string){
+	console.log("Your ID is:" + id);
+}
+// OK
+printId(101);
+// OK
+printId("202");
+// Error
+printId({myId: 22342});
+> Argument of type '{myID: number}' is not assignable to parameter of type 'string | number'.
+```
+
+#### Working with Union Types
+
+- It's easy to provide a value matching a union type - simply provide a type matching any of the union's members.
+- If you have a value of a union type, how do you work with it?
+- TypeScript will only allow operations valid for every member of the union.
+- For example, if you have the union `string | number`, you can't use methods that are only available on `string`:
+
+```ts
+function printId(id: number | string){
+	console.log(id.toUpperCase());
+}
+> Property 'toUpperCase' does not exist on type 'string | number'.
+> 	Property 'toUpperCase' does not exist on type 'number'.
+```
+
+- The solution is to _narrow_ the union with code, the same as you would do in JavaScript without type annotations.
+- _Narrowing_ occurs when 
