@@ -400,3 +400,11 @@ hello
   </code></pre>
 </div>
 
+> **Example Code:**
+> 
+> ```ts
+> // TypeScript example
+> function greet(name: string): string {
+>     return `Hello, ${name}!`;
+> }
+> ```
