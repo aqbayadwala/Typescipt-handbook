@@ -485,8 +485,28 @@ printCoord({x:20, y:100});
 - Type aliases and interface are very similar.
 - The key distinction between type and interface is that type cannot be re-opened to add new properties vs an interface is always extendable.
 
-| Inteface                                                                                                                                                                              | Type                                                                                                                                                                                  |
-| :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| Extending an interface                                                                                                                                                                | Extending a type via intersection                                                                                                                                                     |
-| ```ts<br>interface Animal {<br> name: string;<br>}<br><br>interface Bear extends Animal {<br> honey: boolean;<br>}<br><br>const bear = getBear();<br>bear.name;<br>bear.honey;<br>``` | ```ts<br>interface Animal {<br> name: string;<br>}<br><br>interface Bear extends Animal {<br> honey: boolean;<br>}<br><br>const bear = getBear();<br>bear.name;<br>bear.honey;<br>``` |
-|                                                                                                                                                                                       |                                                                                                                                                                                       |
+##### Extending an interface
+
+```ts
+interface Animal {
+  name: string;
+}  
+
+interface Bear extends Animal {
+  honey: boolean;
+}
+
+const bear = getBear();
+bear.name;
+bear.honey;
+```
+
+##### Extending a type via intersection
+
+```ts
+type Animal = {
+  name: string
+}
+
+
+```
