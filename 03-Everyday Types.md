@@ -459,4 +459,34 @@ userInput = "new input";
 
 ## Interfaces
 
-- 
+- An interface declaration is another way to name an object type:
+
+```ts
+interface Point {
+	x: number;
+	y: number;
+}
+
+function printCoord(pt: Point){
+	console.log("The coordinate's x value is " + pt.x);
+	console.log("The coordinate's y value is " + pt.y);
+}
+
+printCoord({x:20, y:100});
+```
+
+- The above example works just as if we had used an anonymous object type (`{x: number, y:number}`)
+- TypeScript is only concerned with the structure of the value we passed to `printCoord`.
+- It only cares that it has the expected properties.
+- Being concerned with the structure and capabilities of types is why we call TypeScript a _structurally typed_ type system.
+
+#### Differences Between Type Alias and Interface
+
+- Type aliases and interface are very similar.
+- The key distinction between type and interface is that type cannot be re-opened to add new properties vs an interface is always extendable.
+
+| Inteface                                                                                                                                                                              | Type                                                                                                                                                                                  |
+| :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Extending an interface                                                                                                                                                                | Extending a type via intersection                                                                                                                                                     |
+| ```ts<br>interface Animal {<br> name: string;<br>}<br><br>interface Bear extends Animal {<br> honey: boolean;<br>}<br><br>const bear = getBear();<br>bear.name;<br>bear.honey;<br>``` | ```ts<br>interface Animal {<br> name: string;<br>}<br><br>interface Bear extends Animal {<br> honey: boolean;<br>}<br><br>const bear = getBear();<br>bear.name;<br>bear.honey;<br>``` |
+|                                                                                                                                                                                       |                                                                                                                                                                                       |
