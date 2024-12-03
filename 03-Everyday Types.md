@@ -326,6 +326,21 @@ printId({myId: 22342});
 > Argument of type '{myID: number}' is not assignable to parameter of type 'string | number'.
 ```
 
+> The separator of the union members is allowed before the first element, so you could also write this:
+> 
+> ```ts
+> function printTextOrNumberOrBool(
+>   textOrNumberOrBool:
+>     | string
+>     | number
+>     | boolean
+> ) {
+>   console.log(textOrNumberOrBool);
+> }
+> ```
+
+
+
 #### Working with Union Types
 
 - It's easy to provide a value matching a union type - simply provide a type matching any of the union's members.
@@ -390,21 +405,4 @@ function getFirstThree(x: number[] | string){
 }
 ```
 
-<div style="background-color: #bee5f7; padding: 10px; border-radius: 5px; color: #333;">
-hello
-  <pre><code class="language-ts">
-  // Your code here
-  function helloWorld() {
-      console.log("Hello, world!");
-  }
-  </code></pre>
-</div>
 
-> **Example Code:**
-> 
-> ```ts
-> // TypeScript example
-> function greet(name: string): string {
->     return `Hello, ${name}!`;
-> }
-> ```
