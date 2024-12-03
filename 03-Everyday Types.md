@@ -439,3 +439,24 @@ printCoord({x:100, y:100});
 type ID = number | string
 ```
 
+- Note that aliases are just names for already existing types.
+- They don't change the behavior of an existing type.
+
+```ts
+type UserInputSanitizedString = string;
+// now UserInputSanitizedString is just another name for string
+
+function sanitizeInput(str: string): UserInputSanitizedString {
+	return sanitize(str);
+}
+
+// Create a sanitized input
+let userInput = sanitizeInput(getInput());
+
+// Can still be re-assigned with a string though
+userInput = "new input";
+```
+
+## Interfaces
+
+- 
