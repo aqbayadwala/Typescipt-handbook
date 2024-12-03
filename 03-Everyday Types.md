@@ -98,7 +98,7 @@ let myName = "Alice";
 ```ts
 // Parameter type annotation
 function greet(name: string){
-	console.log("Hello, " + name.toUpperCase() + "!!");
+  console.log("Hello, " + name.toUpperCase() + "!!");
 }
 ```
 
@@ -126,7 +126,7 @@ greet(42);
 
 ```ts
 function getFavouriteNumber(): number {
-	return 26;
+  return 26;
 }
 ```
 
@@ -153,7 +153,7 @@ function getFavouriteNumber(): number {
 
 ```ts
 async function getFavouriteNumber(): Promise<number> {
-	return 26;
+  return 26;
 }
 ```
 
@@ -172,13 +172,13 @@ const names = ["Alice", "Bob", "Eve"];
 
 // Contextual typing for function - parameter s inferred to have type string
 names.forEach(function (s) {
-	console.log(s.toUpperCase());
+  console.log(s.toUpperCase());
 });
 // TypeScript knows that s is a string because names is an array of strings
 
 // Contextual typing also applies to arrow functions
 names.forEach((s) => {
-	console.log(s.toUpperCase());
+  console.log(s.toUpperCase());
 });
 ```
 
@@ -256,8 +256,8 @@ names.forEach((s) => {
 ```ts
 // The parameter's type annotation is an object type
 function printCoord(pt: {x: number; y:number}){
-	console.log("The coordinate's x value is " + pt.x);
-	console.log("The coordinate's y value is " + pt.y);
+  console.log("The coordinate's x value is " + pt.x);
+  console.log("The coordinate's y value is " + pt.y);
 }
 
 printCoord({ x: 3, y: 7 });
@@ -274,7 +274,7 @@ printCoord({ x: 3, y: 7 });
 
 ```ts
 function printName(obj: {first: string, last?: string}){
-	// ...
+  // ...
 }
 // Both OK
 printName({first: "Bob"});
@@ -286,18 +286,18 @@ printName({first: "Alice", last: "Alisson"});
 
 ```ts
 function printName(obj: {first: string, last?: string}){
-	// Error - might crash if 'obj.last' wasn't provided
-	console.log(obj.last.toUpperCase());
+  // Error - might crash if 'obj.last' wasn't provided
+  console.log(obj.last.toUpperCase());
 
 > 'obj.last' is probably undefined
-
-	if (obj.last !== undefined){
-		// OK
-		console.log(obj.last.toUpperCase());
-	}
-
-	// A safe alternative using modern JavaScript syntax:
-	console.log(obj.last?.toUpperCase());
+  
+  if (obj.last !== undefined){
+    // OK
+    console.log(obj.last.toUpperCase());
+  }
+  
+  // A safe alternative using modern JavaScript syntax:
+  console.log(obj.last?.toUpperCase());
 }
 ```
 
@@ -315,7 +315,7 @@ function printName(obj: {first: string, last?: string}){
 
 ```ts
 function printId(id: number | string){
-	console.log("Your ID is:" + id);
+  console.log("Your ID is:" + id);
 }
 // OK
 printId(101);
@@ -351,10 +351,10 @@ printId({myId: 22342});
 
 ```ts
 function printId(id: number | string){
-	console.log(id.toUpperCase());
+  console.log(id.toUpperCase());
 }
 > Property 'toUpperCase' does not exist on type 'string | number'.
-> 	Property 'toUpperCase' does not exist on type 'number'.
+>   Property 'toUpperCase' does not exist on type 'number'.
 ```
 
 - The solution is to _narrow_ the union with code, the same as you would do in JavaScript without type annotations.
@@ -368,13 +368,13 @@ function printId(id: number | string){
 
 ```ts
 function printId(id: number | string){
-	if (typeof id === 'string'){
-		// In this branch, id is of type 'string'
-		console.log(id.toUpperCase());
-	} else {
-		// Here, id is type 'number'
-		console.log(id);
-	}
+  if (typeof id === 'string'){
+    // In this branch, id is of type 'string'
+    console.log(id.toUpperCase());
+  } else {
+    // Here, id is type 'number'
+    console.log(id);
+  }
 }
 ```
 
@@ -382,13 +382,13 @@ function printId(id: number | string){
 
 ```ts
 function welcomePeople(x: string[] | string){
-	if (Array.isArray(x)){
-		// Here 'x' is an 'string[]'
-		console.log("Hello, " +  x.join(" and "));
-	} else {
-		// Here 'x' is a 'string'
-		console.log("Welcome lone traveler " + x);
-	}
+  if (Array.isArray(x)){
+  	// Here 'x' is an 'string[]'
+  	console.log("Hello, " +  x.join(" and "));
+  } else {
+  	// Here 'x' is a 'string'
+  	console.log("Welcome lone traveler " + x);
+  }
 }
 ```
 
@@ -402,7 +402,7 @@ function welcomePeople(x: string[] | string){
 ```ts
 // Return type is inferred as number[] | string
 function getFirstThree(x: number[] | string){
-	return x.slice(0,3);
+  return x.slice(0,3);
 }
 ```
 
@@ -419,14 +419,14 @@ function getFirstThree(x: number[] | string){
 
 ```ts
 type Point = {
-	x: number;
-	y: number;
+  x: number;
+  y: number;
 }
 
 // Exactly the same as the earlier example
 function printCoord(pt: Point){
-	console.log("The coordinate's x value is " + pt.x);
-	console.log("The coordinate's y value is " + pt.y);
+  console.log("The coordinate's x value is " + pt.x);
+  console.log("The coordinate's y value is " + pt.y);
 }
 
 printCoord({x:100, y:100});
@@ -447,7 +447,7 @@ type UserInputSanitizedString = string;
 // now UserInputSanitizedString is just another name for string
 
 function sanitizeInput(str: string): UserInputSanitizedString {
-	return sanitize(str);
+  return sanitize(str);
 }
 
 // Create a sanitized input
@@ -463,13 +463,13 @@ userInput = "new input";
 
 ```ts
 interface Point {
-	x: number;
-	y: number;
+  x: number;
+  y: number;
 }
 
 function printCoord(pt: Point){
-	console.log("The coordinate's x value is " + pt.x);
-	console.log("The coordinate's y value is " + pt.y);
+  console.log("The coordinate's x value is " + pt.x);
+  console.log("The coordinate's y value is " + pt.y);
 }
 
 printCoord({x:20, y:100});
@@ -508,5 +508,12 @@ type Animal = {
   name: string
 }
 
+type Bear = Animal & {
+  honey: boolean;
+}
 
+const Bear = getBear();
+bear.name;
+bear.honey;
 ```
+
