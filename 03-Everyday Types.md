@@ -393,7 +393,6 @@ function welcomePeople(x: string[] | string){
 
 - Notice that in the `else` branch, we don't need to do anything special - if `x` wasn't a `string[]`, then it must have been a `string`.
 <br>
-
 - Sometimes you'll have a union where all the members have something in common.
 - For example, both arrays and strings have a `slice` method.
 - If every member in a union has a property in common, you can use that property without narrowing:
