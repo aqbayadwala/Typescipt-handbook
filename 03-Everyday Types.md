@@ -342,4 +342,61 @@ function printId(id: number | string){
 ```
 
 - The solution is to _narrow_ the union with code, the same as you would do in JavaScript without type annotations.
-- _Narrowing_ occurs when 
+- _Narrowing_ occurs when TypeScript deduce a more specific type for a value based on the structure of the code.
+
+> [!info]
+> ###### Why do I need narrowing or any other means so that TypeScript can figure out types?
+> - If I help TypeScript better understand types, it helps me in turn to identify errors in my code.
+
+- For example, TypeScript knows only a `string` value can have `typeof` value `string`.
+
+```ts
+function printId(id: number | string){
+	if (typeof id === 'string'){
+		// In this branch, id is of type 'string'
+		console.log(id.toUpperCase());
+	} else {
+		// Here, id is type 'number'
+		console.log(id);
+	}
+}
+```
+
+- Another example is to use a function `Array.isArray`:
+
+```ts
+function welcomePeople(x: string[] | string){
+	if (Array.isArray(x)){
+		// Here 'x' is an 'string[]'
+		console.log("Hello, " +  x.join(" and "));
+	} else {
+		// Here 'x' is a 'string'
+		console.log("Welcome lone traveler " + x);
+	}
+}
+```
+
+- Notice that in the `else` branch, we don't need to do anything special - if `x` wasn't a `string[]`, then it must have been a `string`.
+<br>
+
+- Sometimes you'll have a union where all the members have something in common.
+- For example, both arrays and strings have a `slice` method.
+- If every member in a union has a property in common, you can use that property without narrowing:
+
+```ts
+// Return type is inferred as number[] | string
+function getFirstThree(x: number[] | string){
+	return x.slice(0,3);
+}
+```
+
+<div style="background-color: #bee5f7; padding: 10px; border-radius: 5px; color: #333;">
+hello
+  <pre><code class="language-ts">
+  // Your code here
+  function helloWorld() {
+      console.log("Hello, world!");
+  }
+  </code></pre>
+</div>
+
